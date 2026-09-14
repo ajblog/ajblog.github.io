@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فرم نظر سنجی</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #182319;
+        --ink-soft: #2c3a2e;
+        --paper: #f3eedb;
+        --paper-soft: #e8dfc0;
+        --brass: #b6873f;
+        --brass-deep: #8f6a30;
+        --moss: #54705c;
+        --line: rgba(24, 35, 25, 0.14);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: var(--brass);
+        color: var(--paper);
+      }
+      a {
+        color: inherit;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .hero {
+        background:
+          radial-gradient(
+            ellipse at 18% -10%,
+            rgba(182, 135, 63, 0.22),
+            transparent 55%
+          ),
+          var(--ink);
+        color: var(--paper);
+        padding: 64px 24px 96px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-inner {
+        max-width: 640px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out 0.1s forwards;
+      }
+      .brand svg {
+        color: var(--brass);
+        flex: none;
+      }
+      .brand span {
+        font-weight: 700;
+        font-size: 17px;
+        letter-spacing: 0.01em;
+      }
+
+      .stack {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 30px;
+        height: 64px;
+        align-items: flex-end;
+      }
+      .stack span {
+        display: block;
+        width: 14px;
+        border-radius: 2px 2px 0 0;
+        background: linear-gradient(180deg, var(--brass), var(--brass-deep));
+        opacity: 0.9;
+        transform-origin: bottom;
+        animation: grow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .stack span:nth-child(1) {
+        height: 38px;
+        animation-delay: 0.05s;
+      }
+      .stack span:nth-child(2) {
+        height: 58px;
+        animation-delay: 0.12s;
+      }
+      .stack span:nth-child(3) {
+        height: 46px;
+        background: linear-gradient(180deg, #c9b98a, #a99861);
+        animation-delay: 0.19s;
+      }
+      .stack span:nth-child(4) {
+        height: 64px;
+        animation-delay: 0.26s;
+      }
+      .stack span:nth-child(5) {
+        height: 30px;
+        animation-delay: 0.33s;
+      }
+      .stack span:nth-child(6) {
+        height: 50px;
+        background: linear-gradient(180deg, #c9b98a, #a99861);
+        animation-delay: 0.4s;
+      }
+      .stack span:nth-child(7) {
+        height: 40px;
+        animation-delay: 0.47s;
+      }
+
+      @keyframes grow {
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: clamp(28px, 5.2vw, 42px);
+        font-weight: 900;
+        line-height: 1.4;
+        margin: 0 0 18px;
+        letter-spacing: -0.01em;
+      }
+      .hero p.lead {
+        font-size: 17px;
+        color: #d9d2b8;
+        max-width: 54ch;
+        margin: 0;
+      }
+
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0 24px 100px;
+      }
+
+      .pitch {
+        margin-top: -48px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 32px 28px;
+        box-shadow: 0 30px 60px -30px rgba(24, 35, 25, 0.35);
+        position: relative;
+        z-index: 3;
+      }
+      .pitch p {
+        margin: 0 0 14px;
+        font-size: 16px;
+        color: var(--ink-soft);
+      }
+      .pitch p:last-child {
+        margin-bottom: 0;
+      }
+      .pitch strong {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .steps {
+        margin: 52px 0 46px;
+        display: grid;
+        gap: 24px;
+      }
+      .step {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .step .icon {
+        flex: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--ink);
+        color: var(--brass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .step h3 {
+        margin: 4px 0 4px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .step p {
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+
+      form {
+        background: var(--paper-soft);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 32px 28px;
+      }
+      form h2 {
+        font-size: 22px;
+        font-weight: 800;
+        margin: 0 0 6px;
+      }
+      form > p.formlead {
+        margin: 0 0 28px;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 26px;
+      }
+      legend,
+      label.field-label {
+        display: block;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 10px;
+        padding: 0;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--moss);
+        margin: -4px 0 10px;
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"] {
+        width: 100%;
+        font-family: inherit;
+        font-size: 16px;
+        padding: 13px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+      }
+      input:focus {
+        outline: none;
+        border-color: var(--brass);
+        box-shadow: 0 0 0 3px rgba(182, 135, 63, 0.22);
+      }
+
+      .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 520px) {
+        .row2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .choice {
+        position: relative;
+      }
+      .choice input {
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+      }
+      .choice label {
+        display: inline-block;
+        padding: 9px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        font-size: 14px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s,
+          transform 0.1s;
+      }
+      .choice input:checked + label {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--paper);
+      }
+      .choice label:active {
+        transform: scale(0.97);
+      }
+      .choice input:focus-visible + label {
+        box-shadow: 0 0 0 3px rgba(182, 135, 63, 0.35);
+      }
+
+      .faces {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+      .faces .choice label {
+        width: 54px;
+        height: 54px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
+      .faces-caption {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--moss);
+        margin-top: 8px;
+      }
+
+      button.submit {
+        width: 100%;
+        margin-top: 6px;
+        padding: 16px 18px;
+        border: none;
+        border-radius: 12px;
+        background: var(--brass);
+        color: var(--ink);
+        font-family: inherit;
+        font-weight: 800;
+        font-size: 16px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          transform 0.1s;
+      }
+      button.submit:hover {
+        background: var(--brass-deep);
+        color: var(--paper);
+      }
+      button.submit:active {
+        transform: scale(0.99);
+      }
+      button.submit:disabled {
+        opacity: 0.6;
+        cursor: default;
+      }
+
+      .note {
+        font-size: 13px;
+        color: var(--moss);
+        text-align: center;
+        margin-top: 14px;
+      }
+
+      .thankyou {
+        display: none;
+        text-align: center;
+        padding: 50px 20px;
+      }
+      .thankyou .mark {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--brass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 22px;
+      }
+      .thankyou .mark svg {
+        stroke-dasharray: 24;
+        stroke-dashoffset: 24;
+        animation: draw 0.5s ease-out 0.1s forwards;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .thankyou h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+      .thankyou p {
+        color: var(--ink-soft);
+        margin: 0;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--ink-soft);
+        font-size: 13px;
+        padding-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="brand">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5" />
+            <path d="M12 6c2-1.5 5-2 8-1.5v13c-3-.5-6 0-8 1.5" />
+            <path d="M12 6v13.5" />
+          </svg>
+          <span>یار مهربان</span>
+        </div>
+        <div class="stack" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span
+          ><span></span><span></span>
+        </div>
+        <h1>
+          چند وقته دارم روی یه ایده کار می‌کنم:<br />قرض دادن کتاب به شیوه مدرن
+        </h1>
+        <p class="lead">
+          قراره جایی باشه که کتابای خونده‌شده‌ت رو به یکی دیگه قرض بدی، و در عوض
+          به کتابای بقیه دسترسی داشته باشی. هنوز کامل نساختمش — قبلش می‌خوام
+          بدونم به نظرت چطوره.
+        </p>
+      </div>
+    </section>
+
+    <main>
+      <div class="pitch">
+        <p>
+          فکرش از یه سوال ساده شروع شد: چرا باید یه کتاب رو بخرم، یه بار بخونمش،
+          بعد بذارمش رو طاقچه که خاک بخوره؟ در حالی که احتمالاً یکی نزدیک من
+          همین الان دنبالشه. (بماند که قیمت کتاب جوری زیاد میشه هر روز که واقعا
+          ترسناکه)
+        </p>
+        <p>
+          همچنین همیشه یکی از زیباترین جلوه‌های فرهنگ کتاب‌خوانی از نظر من
+          اشتراک‌گذاری کتاب ها با یکدیگر بوده ولی این تو رو محدود میکنه به جامعه
+          نزدیک دور شخص خودت!
+        </p>
+        <p>
+          میخوام با اتکا به یکی از زیباترین مفاهیم جوامع انسانی یعنی
+          <strong>اعتماد</strong>
+
+          این ایده رو جلو ببرم.
+        </p>
+        <p>
+          <strong>منطقش اینه:</strong> هر کتابی که قرض میدی بر اساس ارزشی که
+          داره به تو سکه میده که میتونی با جمع کردن اون سکه‌ها کتاب‌های خیلی با
+          ارزش‌تری رو خودت بخونی!
+        </p>
+        <p>
+          مثلا دو بار ملت عشق :)) رو قرض بده تا با سکه‌هاش بتونی دن کیشوت رو قرض
+          بگیری!
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="icon">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              />
+            </svg>
+          </div>
+          <div>
+            <h3>کتاباتو معرفی کن</h3>
+            <p>
+              چندتا عکس بگیر از چیزایی که دیگه بهشون سر نمی‌زنی، با یه توضیح
+              کوتاه از وضعیتشون.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="10" cy="10" r="6.5" />
+              <path d="M19 19l-4.5-4.5" />
+            </svg>
+          </div>
+          <div>
+            <h3>یکی رو پیدا کن که همون‌جا داره</h3>
+            <p>
+              تو کاتالوگ بگرد، ببین کی نزدیکته و همون کتابی که می‌خوای رو داره.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="icon">
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 7h11l-3-3M20 17H9l3 3" />
+            </svg>
+          </div>
+          <div>
+            <h3>ردوبدلش کن</h3>
+            <p>
+              حضوری یا با پیک، هرجور راحت‌تری — بخون، بعد برش‌گردون برای نفر
+              بعدی.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <form
+        id="interestForm"
+        action="https://formspree.io/f/mppzvozw"
+        method="POST"
+      >
+        <h2>چند تا سوال، دو دقیقه</h2>
+        <p class="formlead">
+          جواب‌هات کمکم می‌کنه بفهمم دقیقاً چی بسازم، نه چیزی که فکر می‌کنم
+          لازمه.
+        </p>
+
+        <fieldset>
+          <label class="field-label" for="name">اسمت چیه؟</label>
+          <input
+            type="text"
+            id="name"
+            name="اسم"
+            required
+            placeholder="مثلاً سارا"
+          />
+        </fieldset>
+
+        <fieldset>
+          <div class="row2">
+            <div>
+              <label class="field-label" for="contact">شماره یا ایمیلت</label>
+              <input
+                type="text"
+                id="contact"
+                name="راه ارتباطی"
+                required
+                placeholder="۰۹xxxxxxxxx یا ایمیل"
+              />
+            </div>
+            <div>
+              <label class="field-label" for="city">کجا زندگی می‌کنی؟</label>
+              <input
+                type="text"
+                id="city"
+                name="شهر و محله"
+                placeholder="شهر و محله"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            دست خودت چندتا کتاب هست که دلت میاد بدیش دست یکی دیگه؟
+          </legend>
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="تعداد کتاب برای اشتراک"
+          >
+            <div class="choice">
+              <input
+                type="radio"
+                id="books_many"
+                name="کتاب برای اشتراک"
+                value="چندتا هست"
+                required
+              /><label for="books_many">چندتا هست</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="books_few"
+                name="کتاب برای اشتراک"
+                value="یکی دوتا"
+              /><label for="books_few">یکی دوتا</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="books_none"
+                name="کتاب برای اشتراک"
+                value="فعلا هیچی، فقط میخوام بگیرم"
+              /><label for="books_none">فعلاً هیچی، فقط می‌خوام بگیرم</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            گرون‌ترین کتابی که راضی می‌شی قرض بدی، تقریباً چقدر می‌ارزه؟
+          </legend>
+          <p class="hint">
+            این کمکم می‌کنه بفهمم تضمین/بیمه‌ش رو چطور طراحی کنم
+          </p>
+          <div class="choices" role="radiogroup" aria-label="ارزش تقریبی کتاب">
+            <div class="choice">
+              <input
+                type="radio"
+                id="v1"
+                name="ارزش کتاب"
+                value="زیر ۴۰۰ تومن"
+              /><label for="v1">زیر ۴۰۰ تومن</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="v2"
+                name="ارزش کتاب"
+                value="تا ۸۰۰ تومن"
+              /><label for="v2">تا ۸۰۰ تومن</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="v3"
+                name="ارزش کتاب"
+                value="بین ۱ تا ۲ تومن"
+              /><label for="v3">بین ۱ تا ۲ تومن</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="v4"
+                name="ارزش کتاب"
+                value="اگه کتاب بیمه میشه مبلغ مهم نیست"
+              /><label for="v4"
+                >اگه کتاب صد در صد بیمه میشه مبلغ برام مهم نیست</label
+              >
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            چی باعث می‌شه مردد باشی کتابتو دست یه غریبه بدی؟
+          </legend>
+          <div class="choices" role="radiogroup" aria-label="نگرانی اصلی">
+            <div class="choice">
+              <input
+                type="radio"
+                id="w1"
+                name="نگرانی اصلی"
+                value="میترسم پس ندن یا گم بشه"
+                required
+              /><label for="w1">می‌ترسم پس ندن یا گم بشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="w2"
+                name="نگرانی اصلی"
+                value="دوست ندارم آدرسم دست غریبه بیفته"
+              /><label for="w2">دوست ندارم آدرسم دست غریبه بیفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="w3"
+                name="نگرانی اصلی"
+                value="وقت هماهنگ کردن ندارم"
+              /><label for="w3">وقت هماهنگ کردن ندارم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="w4"
+                name="نگرانی اصلی"
+                value="اصلا نگران نیستم"
+              /><label for="w4">اصلاً نگران نیستم</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            برای گرفتن کتاب از یه نفر تو همون شهر، کدوم حالت رو میپسندی؟
+          </legend>
+          <div class="choices" role="radiogroup" aria-label="ترجیح تحویل">
+            <div class="choice">
+              <input
+                type="radio"
+                id="d1"
+                name="ترجیح تحویل"
+                value="حضوری ببینمش، حتی اگه یکم اذیت باشه"
+                required
+              /><label for="d1">حضوری ببینمش، حتی اگه یکم سخت باشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="d2"
+                name="ترجیح تحویل"
+                value="با پیک بیاد در خونه، حتی اگه هزینه داشته باشه"
+              /><label for="d2"
+                >با پیک بیاد در خونه، حتی اگه هزینه داشته باشه</label
+              >
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="d3"
+                name="ترجیح تحویل"
+                value="بستگی داره چقدر گرون باشه"
+              /><label for="d3">بستگی داره چقدر گرون باشه</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            کتابی داری که دیگه هیچ‌وقت سراغش نمی‌ری و ترجیح می‌دی کلاً بدیش بره؟
+          </legend>
+          <div class="choices" role="radiogroup" aria-label="تمایل به اهدا">
+            <div class="choice">
+              <input
+                type="radio"
+                id="don1"
+                name="تمایل به اهدا"
+                value="آره چندتا هست"
+                required
+              /><label for="don1">آره، چندتا هست</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="don2"
+                name="تمایل به اهدا"
+                value="شاید یکی دوتا"
+              /><label for="don2">شاید یکی دوتا</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="don3"
+                name="تمایل به اهدا"
+                value="نه، فقط قرض میدم"
+              /><label for="don3">نه، فقط قرض می‌دم</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">بیشتر دنبال چه‌جور کتابایی هستی؟</legend>
+          <p class="hint">هرچندتا می‌خوای بزن</p>
+          <div class="choices">
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g1"
+                name="ژانر"
+                value="رمان و داستان"
+              /><label for="g1">رمان و داستان</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="g2" name="ژانر" value="تاریخ" /><label
+                for="g2"
+                >تاریخ</label
+              >
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g3"
+                name="ژانر"
+                value="روانشناسی و خودشناسی"
+              /><label for="g3">روانشناسی و خودشناسی</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="g3" name="ژانر" value="فلسفه" /><label
+                for="g3"
+                >فلسفه</label
+              >
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g4"
+                name="ژانر"
+                value="دانشگاهی و درسی"
+              /><label for="g4">دانشگاهی و درسی</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g5"
+                name="ژانر"
+                value="شعر و ادبیات"
+              /><label for="g5">شعر و ادبیات</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g6"
+                name="ژانر"
+                value="کسب و کار و اقتصاد"
+              /><label for="g6">کسب‌وکار و اقتصاد</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g7"
+                name="ژانر"
+                value="علمی و فنی"
+              /><label for="g7">علمی و فنی</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g8"
+                name="ژانر"
+                value="کودک و نوجوان"
+              /><label for="g8">کودک و نوجوان</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">در کل، این ایده چقدر به دلت نشست؟</legend>
+          <div class="choices faces" role="radiogroup" aria-label="میزان علاقه">
+            <div class="choice">
+              <input
+                type="radio"
+                id="f1"
+                name="میزان علاقه"
+                value="زیاد نه"
+                required
+              /><label for="f1">🙁</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="f2"
+                name="میزان علاقه"
+                value="بد نیست"
+              /><label for="f2">😐</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="f3"
+                name="میزان علاقه"
+                value="خوبه"
+              /><label for="f3">🙂</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="f4"
+                name="میزان علاقه"
+                value="همین الان بگو کی میاد"
+              /><label for="f4">😄</label>
+            </div>
+          </div>
+          <div class="faces-caption">
+            <span>زیاد به من نمی‌خوره</span><span>همین الان بگو کی میاد</span>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="submit">فرستادن</button>
+        <p class="note">
+          فقط برای همین کار ازش استفاده می‌کنم، جایی نمی‌فرستمش.
+        </p>
+      </form>
+
+      <div class="thankyou" id="thankyou">
+        <div class="mark">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12.5l4.5 4.5L19 7" />
+          </svg>
+        </div>
+        <h2>گرفتمش، ممنون</h2>
+        <p>هروقت چیزی برای نشون‌دادن آماده شد، اول از همه بهت میگم.</p>
+      </div>
+
+      <footer>هنوز در حال ساختنشم</footer>
+    </main>
+
+    <script>
+      const form = document.getElementById("interestForm");
+      const thankyou = document.getElementById("thankyou");
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const btn = form.querySelector(".submit");
+        btn.disabled = true;
+        btn.textContent = "در حال فرستادن...";
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            form.style.display = "none";
+            thankyou.style.display = "block";
+          } else {
+            throw new Error("submit failed");
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = "فرستادن";
+          alert("یه مشکلی پیش اومد، دوباره امتحان کن.");
+        }
+      });
+    </script>
+  </body>
+</html>
