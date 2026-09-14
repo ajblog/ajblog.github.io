@@ -197,6 +197,17 @@
         font-weight: 700;
       }
 
+      .section-title {
+        margin: 42px 0 24px;
+        padding: 14px 16px;
+        border-right: 4px solid var(--brass);
+        background: rgba(182, 135, 63, 0.09);
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
       .steps {
         margin: 52px 0 46px;
         display: grid;
@@ -278,6 +289,10 @@
         background: var(--paper);
         color: var(--ink);
       }
+      input::placeholder {
+        color: rgba(44, 58, 46, 0.58);
+      }
+
       input:focus {
         outline: none;
         border-color: var(--brass);
@@ -625,6 +640,35 @@
 
         <fieldset>
           <legend class="field-label">
+            بیشتر خودتو کدوم سمت این داستان می‌بینی؟
+          </legend>
+          <p class="hint">می‌تونی هر دو مورد رو انتخاب کنی.</p>
+          <div class="choices">
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="role_lender"
+                name="نقش"
+                value="قرض‌دهنده"
+              />
+              <label for="role_lender">کتاب قرض می‌دم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="role_borrower"
+                name="نقش"
+                value="قرض‌گیرنده"
+              />
+              <label for="role_borrower">کتاب قرض می‌گیرم</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="section-title">اگر قرار باشه کتابتو قرض بدی...</div>
+
+        <fieldset>
+          <legend class="field-label">
             دست خودت چندتا کتاب هست که دلت میاد بدیش دست یکی دیگه؟
           </legend>
           <div
@@ -637,9 +681,19 @@
                 type="radio"
                 id="books_many"
                 name="کتاب برای اشتراک"
-                value="چندتا هست"
+                value="بیشتر از ۱۰ تا"
                 required
-              /><label for="books_many">چندتا هست</label>
+              />
+              <label for="books_many">بیشتر از ۱۰ تا</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="books_some"
+                name="کتاب برای اشتراک"
+                value="۳ تا ۱۰ تا"
+              />
+              <label for="books_some">۳ تا ۱۰ تا</label>
             </div>
             <div class="choice">
               <input
@@ -647,17 +701,197 @@
                 id="books_few"
                 name="کتاب برای اشتراک"
                 value="یکی دوتا"
-              /><label for="books_few">یکی دوتا</label>
+              />
+              <label for="books_few">یکی دوتا</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
                 id="books_none"
                 name="کتاب برای اشتراک"
-                value="فعلا هیچی، فقط میخوام بگیرم"
-              /><label for="books_none">فعلاً هیچی، فقط می‌خوام بگیرم</label>
+                value="فعلاً هیچی، فقط می‌خوام بگیرم"
+              />
+              <label for="books_none">فعلاً هیچی، فقط می‌خوام بگیرم</label>
             </div>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            چی باعث می‌شه مردد باشی کتابتو دست یه غریبه بدی؟
+          </legend>
+          <p class="hint">هرچندتا که برات مهمه انتخاب کن.</p>
+          <div class="choices">
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w1"
+                name="نگرانی از قرض دادن"
+                value="می‌ترسم کتاب پس داده نشه یا گم بشه"
+              /><label for="w1">می‌ترسم پس داده نشه یا گم بشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w2"
+                name="نگرانی از قرض دادن"
+                value="می‌ترسم کتاب آسیب ببینه"
+              /><label for="w2">می‌ترسم کتاب آسیب ببینه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w3"
+                name="نگرانی از قرض دادن"
+                value="دوست ندارم آدرسم دست غریبه بیفته"
+              /><label for="w3">دوست ندارم آدرسم دست غریبه بیفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w4"
+                name="نگرانی از قرض دادن"
+                value="اعتماد ندارم طرف کتاب رو برگردونه"
+              /><label for="w4">اعتماد ندارم طرف برگردونتش</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w5"
+                name="نگرانی از قرض دادن"
+                value="وقت هماهنگ کردن و تحویل دادن ندارم"
+              /><label for="w5">وقت هماهنگ کردن و تحویل دادن ندارم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w6"
+                name="نگرانی از قرض دادن"
+                value="نمی‌خوام کتابم دست کسی باشه که نمی‌شناسم"
+              /><label for="w6">اصلاً راحت نیستم کتابم دست غریبه باشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="w7"
+                name="نگرانی از قرض دادن"
+                value="نگرانی دیگری دارم"
+              /><label for="w7">یه چیز دیگه</label>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="نگرانی دیگر"
+            placeholder="اگه چیز دیگه‌ایه، خودت بنویس..."
+            style="margin-top: 10px"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            کتابی که قرض دادی، تا چه مدت اوکی‌ای دست طرف بمونه؟
+          </legend>
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="مدت مجاز نگهداری کتاب"
+          >
+            <div class="choice">
+              <input
+                type="radio"
+                id="lend1"
+                name="مدت قابل قبول قرض دادن"
+                value="حداکثر یک هفته"
+              /><label for="lend1">حداکثر یک هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="lend2"
+                name="مدت قابل قبول قرض دادن"
+                value="دو تا سه هفته"
+              /><label for="lend2">۲ تا ۳ هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="lend3"
+                name="مدت قابل قبول قرض دادن"
+                value="حدود یک ماه"
+              /><label for="lend3">حدود یک ماه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="lend4"
+                name="مدت قابل قبول قرض دادن"
+                value="یک تا دو ماه"
+              /><label for="lend4">۱ تا ۲ ماه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="lend5"
+                name="مدت قابل قبول قرض دادن"
+                value="مهم نیست، فقط برگرده"
+              /><label for="lend5">مهم نیست، فقط برگرده</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            برای سالم برگشتن کتاب، کدوم چیزا برات مهمه؟
+          </legend>
+          <p class="hint">هرچندتا که می‌خوای بزن.</p>
+          <div class="choices">
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="condition1"
+                name="شرایط سالم ماندن کتاب"
+                value="عدم تا خوردن صفحات"
+              /><label for="condition1">صفحه‌ها تا نخورن</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="condition2"
+                name="شرایط سالم ماندن کتاب"
+                value="عدم خط خوردن و یادداشت"
+              /><label for="condition2">روش چیزی نوشته نشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="condition3"
+                name="شرایط سالم ماندن کتاب"
+                value="عدم لکه و کثیفی"
+              /><label for="condition3">لکه و کثیفی نداشته باشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="condition4"
+                name="شرایط سالم ماندن کتاب"
+                value="برگشت دقیقاً در همان وضعیت"
+              /><label for="condition4">تقریباً همون وضعیت اولش</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="condition5"
+                name="شرایط سالم ماندن کتاب"
+                value="سایر"
+              /><label for="condition5">یه چیز دیگه</label>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="شرایط دیگر کتاب"
+            placeholder="مثلاً جلدش برام خیلی مهمه..."
+            style="margin-top: 10px"
+          />
         </fieldset>
 
         <fieldset>
@@ -665,7 +899,7 @@
             گرون‌ترین کتابی که راضی می‌شی قرض بدی، تقریباً چقدر می‌ارزه؟
           </legend>
           <p class="hint">
-            این کمکم می‌کنه بفهمم تضمین/بیمه‌ش رو چطور طراحی کنم
+            این کمکم می‌کنه بفهمم تضمین/بیمه‌ش رو چطور طراحی کنم.
           </p>
           <div class="choices" role="radiogroup" aria-label="ارزش تقریبی کتاب">
             <div class="choice">
@@ -681,74 +915,288 @@
                 type="radio"
                 id="v2"
                 name="ارزش کتاب"
-                value="تا ۸۰۰ تومن"
-              /><label for="v2">تا ۸۰۰ تومن</label>
+                value="۴۰۰ تا ۸۰۰ تومن"
+              /><label for="v2">۴۰۰ تا ۸۰۰ تومن</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
                 id="v3"
                 name="ارزش کتاب"
-                value="بین ۱ تا ۲ تومن"
-              /><label for="v3">بین ۱ تا ۲ تومن</label>
+                value="۸۰۰ هزار تا ۲ میلیون"
+              /><label for="v3">۸۰۰ هزار تا ۲ میلیون</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
                 id="v4"
                 name="ارزش کتاب"
-                value="اگه کتاب بیمه میشه مبلغ مهم نیست"
-              /><label for="v4"
-                >اگه کتاب صد در صد بیمه میشه مبلغ برام مهم نیست</label
-              >
+                value="بیشتر از ۲ میلیون"
+              /><label for="v4">بیشتر از ۲ میلیون</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="v5"
+                name="ارزش کتاب"
+                value="اگر کتاب بیمه شود مبلغ مهم نیست"
+              /><label for="v5">اگه صددرصد بیمه بشه، مبلغ مهم نیست</label>
             </div>
           </div>
         </fieldset>
 
+        <div class="section-title">اگر قرار باشه کتاب قرض بگیری...</div>
+
         <fieldset>
           <legend class="field-label">
-            چی باعث می‌شه مردد باشی کتابتو دست یه غریبه بدی؟
+            توی چند ماه اخیر چند بار پیش اومده دلت بخواد کتابی رو قرض بگیری ولی
+            نخریش؟
           </legend>
-          <div class="choices" role="radiogroup" aria-label="نگرانی اصلی">
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="دفعات نیاز به قرض گرفتن کتاب"
+          >
             <div class="choice">
               <input
                 type="radio"
-                id="w1"
-                name="نگرانی اصلی"
-                value="میترسم پس ندن یا گم بشه"
-                required
-              /><label for="w1">می‌ترسم پس ندن یا گم بشه</label>
+                id="borrowfreq1"
+                name="دفعات نیاز به قرض گرفتن"
+                value="اصلاً"
+              /><label for="borrowfreq1">اصلاً</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
-                id="w2"
-                name="نگرانی اصلی"
-                value="دوست ندارم آدرسم دست غریبه بیفته"
-              /><label for="w2">دوست ندارم آدرسم دست غریبه بیفته</label>
+                id="borrowfreq2"
+                name="دفعات نیاز به قرض گرفتن"
+                value="یک یا دو بار"
+              /><label for="borrowfreq2">۱–۲ بار</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
-                id="w3"
-                name="نگرانی اصلی"
-                value="وقت هماهنگ کردن ندارم"
-              /><label for="w3">وقت هماهنگ کردن ندارم</label>
+                id="borrowfreq3"
+                name="دفعات نیاز به قرض گرفتن"
+                value="سه تا پنج بار"
+              /><label for="borrowfreq3">۳–۵ بار</label>
             </div>
             <div class="choice">
               <input
                 type="radio"
-                id="w4"
-                name="نگرانی اصلی"
-                value="اصلا نگران نیستم"
-              /><label for="w4">اصلاً نگران نیستم</label>
+                id="borrowfreq4"
+                name="دفعات نیاز به قرض گرفتن"
+                value="بیشتر از پنج بار"
+              /><label for="borrowfreq4">بیشتر از ۵ بار</label>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
           <legend class="field-label">
-            برای گرفتن کتاب از یه نفر تو همون شهر، کدوم حالت رو میپسندی؟
+            معمولاً یه کتاب ۲۰۰ صفحه‌ای رو چقدر طول می‌کشه تموم کنی؟
+          </legend>
+          <p class="hint">
+            تقریبی جواب بده؛ منظور سرعت معمول خودته، نه وقتی خیلی فشرده می‌خونی.
+          </p>
+          <div class="choices" role="radiogroup" aria-label="سرعت مطالعه">
+            <div class="choice">
+              <input
+                type="radio"
+                id="speed1"
+                name="سرعت مطالعه"
+                value="۱ تا ۳ روز"
+              /><label for="speed1">۱ تا ۳ روز</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="speed2"
+                name="سرعت مطالعه"
+                value="۴ تا ۷ روز"
+              /><label for="speed2">۴ تا ۷ روز</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="speed3"
+                name="سرعت مطالعه"
+                value="۱ تا ۲ هفته"
+              /><label for="speed3">۱ تا ۲ هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="speed4"
+                name="سرعت مطالعه"
+                value="۲ تا ۴ هفته"
+              /><label for="speed4">۲ تا ۴ هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="speed5"
+                name="سرعت مطالعه"
+                value="بیشتر از یک ماه"
+              /><label for="speed5">بیشتر از یک ماه</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            وقتی دنبال یه کتابی هستی، بیشتر چرا ترجیح می‌دی قرضش بگیری؟
+          </legend>
+          <p class="hint">هرچندتا که بهت می‌خوره انتخاب کن.</p>
+          <div class="choices">
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow1"
+                name="دلیل قرض گرفتن"
+                value="قیمت بالای کتاب"
+              /><label for="whyborrow1">قیمت کتاب بالاست</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow2"
+                name="دلیل قرض گرفتن"
+                value="فقط یک بار می‌خواهم بخوانم"
+              /><label for="whyborrow2">فقط یک بار می‌خوام بخونمش</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow3"
+                name="دلیل قرض گرفتن"
+                value="می‌خواهم قبل از خرید امتحانش کنم"
+              /><label for="whyborrow3">می‌خوام قبل خرید امتحانش کنم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow4"
+                name="دلیل قرض گرفتن"
+                value="در دسترس نیست"
+              /><label for="whyborrow4">پیدا کردنش سخته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow5"
+                name="دلیل قرض گرفتن"
+                value="مصرف اقتصادی‌تر"
+              /><label for="whyborrow5">کلاً خریدن کتاب برام صرف نمی‌کنه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="whyborrow6"
+                name="دلیل قرض گرفتن"
+                value="دلیل دیگر"
+              /><label for="whyborrow6">یه دلیل دیگه</label>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="دلیل دیگر قرض گرفتن"
+            placeholder="اگه دلیل دیگه‌ای داری، خودت بنویس..."
+            style="margin-top: 10px"
+          />
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            برای قرض گرفتن کتاب، چقدر حاضری صبر کنی؟
+          </legend>
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="زمان انتظار برای دریافت کتاب"
+          >
+            <div class="choice">
+              <input
+                type="radio"
+                id="wait1"
+                name="زمان انتظار برای دریافت"
+                value="همین امروز یا فردا"
+              /><label for="wait1">همین امروز یا فردا</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="wait2"
+                name="زمان انتظار برای دریافت"
+                value="چند روز"
+              /><label for="wait2">چند روز</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="wait3"
+                name="زمان انتظار برای دریافت"
+                value="یک هفته"
+              /><label for="wait3">تا یک هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="wait4"
+                name="زمان انتظار برای دریافت"
+                value="مهم نیست، فقط کتاب را پیدا کنم"
+              /><label for="wait4">مهم نیست، فقط پیداش کنم</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            اگر کتاب دستت باشه، چه مدت برای خوندنش لازم داری؟
+          </legend>
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="مدت مورد نیاز برای مطالعه"
+          >
+            <div class="choice">
+              <input
+                type="radio"
+                id="borrowtime1"
+                name="مدت مورد نیاز برای مطالعه"
+                value="کمتر از یک هفته"
+              /><label for="borrowtime1">کمتر از یک هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="borrowtime2"
+                name="مدت مورد نیاز برای مطالعه"
+                value="۱ تا ۲ هفته"
+              /><label for="borrowtime2">۱ تا ۲ هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="borrowtime3"
+                name="مدت مورد نیاز برای مطالعه"
+                value="۲ تا ۴ هفته"
+              /><label for="borrowtime3">۲ تا ۴ هفته</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="borrowtime4"
+                name="مدت مورد نیاز برای مطالعه"
+                value="بیشتر از یک ماه"
+              /><label for="borrowtime4">بیشتر از یک ماه</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="field-label">
+            برای گرفتن کتاب از یه نفر تو همون شهر، کدوم حالت رو می‌پسندی؟
           </legend>
           <div class="choices" role="radiogroup" aria-label="ترجیح تحویل">
             <div class="choice">
@@ -756,8 +1204,7 @@
                 type="radio"
                 id="d1"
                 name="ترجیح تحویل"
-                value="حضوری ببینمش، حتی اگه یکم اذیت باشه"
-                required
+                value="حضوری ببینمش، حتی اگه یکم سخت باشه"
               /><label for="d1">حضوری ببینمش، حتی اگه یکم سخت باشه</label>
             </div>
             <div class="choice">
@@ -778,45 +1225,130 @@
                 value="بستگی داره چقدر گرون باشه"
               /><label for="d3">بستگی داره چقدر گرون باشه</label>
             </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="d4"
+                name="ترجیح تحویل"
+                value="جای عمومی مشخص مثل کافه یا ایستگاه"
+              /><label for="d4">یه جای عمومی مشخص</label>
+            </div>
           </div>
         </fieldset>
 
         <fieldset>
           <legend class="field-label">
-            کتابی داری که دیگه هیچ‌وقت سراغش نمی‌ری و ترجیح می‌دی کلاً بدیش بره؟
+            برای گرفتن یه کتاب امانتی، با کدوم شرایط مشکلی نداری؟
           </legend>
-          <div class="choices" role="radiogroup" aria-label="تمایل به اهدا">
+          <p class="hint">
+            برای فهمیدن اینکه ضمانت و قوانین امانت چقدر باید جدی باشن.
+          </p>
+          <div class="choices">
             <div class="choice">
               <input
-                type="radio"
-                id="don1"
-                name="تمایل به اهدا"
-                value="آره چندتا هست"
-                required
-              /><label for="don1">آره، چندتا هست</label>
+                type="checkbox"
+                id="trust1"
+                name="شرایط قرض گرفتن"
+                value="احراز هویت"
+              /><label for="trust1">احراز هویت طرفین</label>
             </div>
             <div class="choice">
               <input
-                type="radio"
-                id="don2"
-                name="تمایل به اهدا"
-                value="شاید یکی دوتا"
-              /><label for="don2">شاید یکی دوتا</label>
+                type="checkbox"
+                id="trust2"
+                name="شرایط قرض گرفتن"
+                value="ودیعه یا ضمانت"
+              /><label for="trust2">یه ودیعه یا ضمانت</label>
             </div>
             <div class="choice">
               <input
-                type="radio"
-                id="don3"
-                name="تمایل به اهدا"
-                value="نه، فقط قرض میدم"
-              /><label for="don3">نه، فقط قرض می‌دم</label>
+                type="checkbox"
+                id="trust3"
+                name="شرایط قرض گرفتن"
+                value="امتیاز و سابقه کاربر"
+              /><label for="trust3">دیدن امتیاز و سابقه طرف</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="trust4"
+                name="شرایط قرض گرفتن"
+                value="قوانین جبران خسارت"
+              /><label for="trust4">قوانین مشخص برای گم‌شدن یا آسیب</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="trust5"
+                name="شرایط قرض گرفتن"
+                value="هیچ‌کدام"
+              /><label for="trust5">هیچ‌کدوم؛ ساده و بی‌دردسر باشه</label>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
+          <legend class="field-label">
+            اگه قرار باشه فقط یه چیز تو تجربه قرض گرفتن کتاب بهتر بشه، چی برات
+            مهم‌تره؟
+          </legend>
+          <div
+            class="choices"
+            role="radiogroup"
+            aria-label="مهم‌ترین ویژگی تجربه قرض گرفتن"
+          >
+            <div class="choice">
+              <input
+                type="radio"
+                id="exp1"
+                name="مهم‌ترین ویژگی"
+                value="پیدا کردن سریع کتاب"
+              /><label for="exp1">سریع کتاب موردنظرمو پیدا کنم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="exp2"
+                name="مهم‌ترین ویژگی"
+                value="اعتماد به طرف مقابل"
+              /><label for="exp2">بتونم به طرف اعتماد کنم</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="exp3"
+                name="مهم‌ترین ویژگی"
+                value="تحویل راحت"
+              /><label for="exp3">تحویل و پس دادن راحت باشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="exp4"
+                name="مهم‌ترین ویژگی"
+                value="قیمت پایین"
+              /><label for="exp4">هزینه‌اش کم باشه</label>
+            </div>
+            <div class="choice">
+              <input
+                type="radio"
+                id="exp5"
+                name="مهم‌ترین ویژگی"
+                value="سایر"
+              /><label for="exp5">یه چیز دیگه</label>
+            </div>
+          </div>
+          <input
+            type="text"
+            name="ویژگی دیگر"
+            placeholder="چی؟ خودت بنویس..."
+            style="margin-top: 10px"
+          />
+        </fieldset>
+
+        <fieldset>
           <legend class="field-label">بیشتر دنبال چه‌جور کتابایی هستی؟</legend>
-          <p class="hint">هرچندتا می‌خوای بزن</p>
+          <p class="hint">هرچندتا می‌خوای بزن.</p>
           <div class="choices">
             <div class="choice">
               <input
@@ -841,52 +1373,64 @@
               /><label for="g3">روانشناسی و خودشناسی</label>
             </div>
             <div class="choice">
-              <input type="checkbox" id="g3" name="ژانر" value="فلسفه" /><label
-                for="g3"
+              <input type="checkbox" id="g4" name="ژانر" value="فلسفه" /><label
+                for="g4"
                 >فلسفه</label
               >
             </div>
             <div class="choice">
               <input
                 type="checkbox"
-                id="g4"
-                name="ژانر"
-                value="دانشگاهی و درسی"
-              /><label for="g4">دانشگاهی و درسی</label>
-            </div>
-            <div class="choice">
-              <input
-                type="checkbox"
                 id="g5"
                 name="ژانر"
-                value="شعر و ادبیات"
-              /><label for="g5">شعر و ادبیات</label>
+                value="دانشگاهی و درسی"
+              /><label for="g5">دانشگاهی و درسی</label>
             </div>
             <div class="choice">
               <input
                 type="checkbox"
                 id="g6"
                 name="ژانر"
-                value="کسب و کار و اقتصاد"
-              /><label for="g6">کسب‌وکار و اقتصاد</label>
+                value="شعر و ادبیات"
+              /><label for="g6">شعر و ادبیات</label>
             </div>
             <div class="choice">
               <input
                 type="checkbox"
                 id="g7"
                 name="ژانر"
-                value="علمی و فنی"
-              /><label for="g7">علمی و فنی</label>
+                value="کسب و کار و اقتصاد"
+              /><label for="g7">کسب‌وکار و اقتصاد</label>
             </div>
             <div class="choice">
               <input
                 type="checkbox"
                 id="g8"
                 name="ژانر"
+                value="علمی و فنی"
+              /><label for="g8">علمی و فنی</label>
+            </div>
+            <div class="choice">
+              <input
+                type="checkbox"
+                id="g9"
+                name="ژانر"
                 value="کودک و نوجوان"
-              /><label for="g8">کودک و نوجوان</label>
+              /><label for="g9">کودک و نوجوان</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="g10" name="ژانر" value="سایر" /><label
+                for="g10"
+                >یه چیز دیگه</label
+              >
             </div>
           </div>
+          <input
+            type="text"
+            name="ژانر دیگر"
+            placeholder="مثلاً هنر، سفر، آشپزی..."
+            style="margin-top: 10px"
+          />
         </fieldset>
 
         <fieldset>
@@ -955,8 +1499,6 @@
         <h2>گرفتمش، ممنون</h2>
         <p>هروقت چیزی برای نشون‌دادن آماده شد، اول از همه بهت میگم.</p>
       </div>
-
-      <footer>هنوز در حال ساختنشم</footer>
     </main>
 
     <script>
